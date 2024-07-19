@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .main-div {
+        height: 200px;
+        background-color: rgb(125, 221, 125);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        font-size: 100px;
+      }
+
+      #btn,
+      #btn1,
+      #btn2,
+      #btn3 {
+        background-color: black;
+        color: #fff;
+        font-size: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-div">
+      <div>
+        <button id="btn">start here</button>
+      </div>
+      <div>
+        <p id="one">_ _</p>
+      </div>
+      <div>
+        <button id="btn1">stop here</button>
+      </div>
+    </div>
+    <div class="main-div">
+      <div>
+        <button id="btn2">start here</button>
+      </div>
+      <div>
+        <p id="two">_ _</p>
+      </div>
+      <div>
+        <button id="btn3">stop here</button>
+      </div>
+    </div>
+
+    <script>
+      // start 0-50
+      const StopNum = document.querySelector("#one");
+      const btn1 = document.querySelector("#btn1");
+      const StopNum1 = document.querySelector("#two");
+      const btn3 = document.querySelector("#btn3");
+      let num = 0;
+      let timeref;
+      let num1 = 100;
+
+      let timereb;
+
+      const showMynum = () => {
+        StopNum.innerHTML = "Loading...";
+        timeref = setInterval(() => {
+          StopNum.innerHTML = `${num}`;
+          if (num > 50) {
+            StopNum.innerHTML = clearInterval();
+            // StopNum.innerHTML = 50;
+            StopNum.innerHTML = "Loading...";
+            num = 0;
+          }
+          document.querySelector("#btn").disabled = true;
+          document.querySelector("#btn").style.color = "red";
+          document.querySelector("#btn").style.backgroundColor = "lightgrey";
+
+          num++;
+        }, 1000);
+      };
+      btn.addEventListener("click", showMynum);
+      btn1.addEventListener("click", () => {
+        clearInterval(timeref);
+        document.querySelector("#btn").disabled = false;
+        document.querySelector("#btn").style.color = "white";
+        document.querySelector("#btn").style.backgroundColor = "black";
+      });
+      const showMynum1 = () => {
+        StopNum1.innerHTML = "Loading...";
+        timereb = setInterval(() => {
+          StopNum1.innerHTML = `${num1}`;
+          if (num1 < 50) {
+            StopNum1.innerHTML = clearInterval();
+            // StopNum.innerHTML = 50;
+            StopNum1.innerHTML = "Loading...";
+            num1 = 100;
+          }
+          document.querySelector("#btn2").disabled = true;
+          document.querySelector("#btn2").style.color = "red";
+          document.querySelector("#btn2").style.backgroundColor = "lightgrey";
+
+          num1--;
+        }, 1000);
+      };
+
+      btn2.addEventListener("click", showMynum1);
+      btn3.addEventListener("click", () => {
+        clearInterval(timereb);
+        document.querySelector("#btn2").disabled = false;
+        document.querySelector("#btn2").style.color = "white";
+        document.querySelector("#btn2").style.backgroundColor = "black";
+      });
+
+      //   start 100-50
+    </script>
+  </body>
+</html>
